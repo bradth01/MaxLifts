@@ -7,7 +7,6 @@ import {
 } from 'react-native';
 import CategoryColumn from './categoryColumn';
 import LiftColumn from './liftColumn';
-import AddLiftButton from './addLiftButton';
 import WorkoutTableHeader from './workoutTableHeader';
 import styles from '../styles';
 

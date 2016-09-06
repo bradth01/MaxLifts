@@ -11,6 +11,10 @@ import WorkoutTableHeader from './workoutTableHeader';
 import styles from '../styles';
 
 class WorkoutTable extends Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <View style={styles.workoutTable}>

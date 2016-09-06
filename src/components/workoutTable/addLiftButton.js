@@ -8,12 +8,14 @@ import {
 } from 'react-native';
 import styles from '../styles';
 
+const addLiftButton = require('../../images/ic_add.png');
+
 class AddLiftButton extends Component {
     render() {
         return (            
             <TouchableOpacity style={styles.addLiftButton}>
                 <Text> Add Lift</Text>
-                <Image source={require('../../images/ic_add.png')} />
+                <Image source={addLiftButton} />
             </TouchableOpacity>
         );
     }

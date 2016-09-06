@@ -8,7 +8,7 @@ import {
 import MaxButtons from './maxButtons';
 import styles from '../styles';
 
-class LiftColumn extends Component {
+export default class LiftColumn extends Component {
     constructor(props) {
         super(props);
     }
@@ -34,5 +34,3 @@ class LiftColumn extends Component {
         );
     }
 }
-
-module.exports = LiftColumn;

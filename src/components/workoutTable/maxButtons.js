@@ -11,7 +11,11 @@ import styles from '../styles';
 const liftUpIcon = require('../../images/ic_trending_up.png');
 const liftDownIcon =require('../../images/ic_trending_down.png')
 
-class MaxButtons extends Component {
+export default class MaxButtons extends Component {
+    constructor(props) {
+        super(props);
+    }
+    
     render() {
         return (
             <View style={styles.maxUpButtonView}>
@@ -25,5 +29,3 @@ class MaxButtons extends Component {
         );
     }
 }
-
-module.exports = MaxButtons;

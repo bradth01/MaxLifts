@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import styles from '../styles';
 
-class CategoryColumn extends Component {
+export default class CategoryColumn extends Component {
     render() {
         return (
             <View style={styles.categoryColumn}>
@@ -21,5 +21,3 @@ class CategoryColumn extends Component {
         );
     }
 }
-
-module.exports = CategoryColumn;

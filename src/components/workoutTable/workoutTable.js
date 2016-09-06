@@ -7,10 +7,9 @@ import {
 } from 'react-native';
 import CategoryColumn from './categoryColumn';
 import LiftColumn from './liftColumn';
-import WorkoutTableHeader from './workoutTableHeader';
 import styles from '../styles';
 
-class WorkoutTable extends Component {
+export default class WorkoutTable extends Component {
     constructor(props) {
         super(props);
     }
@@ -18,14 +17,18 @@ class WorkoutTable extends Component {
     render() {
         return (
             <View style={styles.workoutTable}>
-                <WorkoutTableHeader />
                 <View style={styles.workoutTableBody}>
                     <CategoryColumn></CategoryColumn>
-                    <LiftColumn lifts={this.props.lifts} />
+                    <LiftColumn lifts={LIFTS} />
                 </View>
             </View>
         );
     }
 }  
 
-module.exports = WorkoutTable;
+var LIFTS = [
+    {lift: 'Bench Press', max: 180, drop1: 160, drop2: 140},
+    {lift: 'Squat', max: 215, drop1: 195, drop2: 170},
+    {lift: 'OHP', max: 125, drop1: 110, drop2: 95}
+];
+

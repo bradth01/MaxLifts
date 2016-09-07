@@ -75,23 +75,21 @@ const styles = StyleSheet.create({
         marginRight: 5,
         marginBottom: 25,
         marginLeft: 5,
-        justifyContent: 'space-between',
         alignItems: 'center'
     },
     addLiftRow: {
-        flexDirection: 'row',
-        alignItems: 'flex-start',
-        justifyContent: 'space-around',
+        alignItems: 'center',
         padding: 25
     },
     addLiftInput: {
-        height: 22,
-        width: 100,
+        height: 40,
+        width: 250,
         borderColor: 'grey',
-        borderWidth: 1
+        borderWidth: 1,
+        textAlign: 'center'
     },
     addLiftText: {
-        fontSize: 22
+        fontSize: 40
     }
 });
 

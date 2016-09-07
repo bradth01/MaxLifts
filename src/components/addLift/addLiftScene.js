@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 import {
     Text,
     View,
-    TextInput
+    TextInput,
+    TouchableOpacity
 } from 'react-native';
 import styles from '../styles';
 
@@ -18,11 +19,17 @@ export default class AddLiftScene extends Component {
             <View style={styles.addLiftBody}>
                 <View style={styles.addLiftRow}>
                     <Text style={styles.addLiftText}>Lift</Text>
-                    <TextInput style={styles.addLiftInput}/>
+                    <TextInput 
+                        placeholder="Enter name of lift"
+                        style={styles.addLiftInput}
+                    />
                 </View>
                 <View style={styles.addLiftRow}>
                     <Text style={styles.addLiftText}>Work Set</Text>
-                    <TextInput style={styles.addLiftInput}/>
+                    <TextInput 
+                        style={styles.addLiftInput}
+                        placeholder="Enter starting work weight"
+                    />
                 </View>
             </View>
         );

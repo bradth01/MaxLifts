@@ -9,10 +9,6 @@ import MaxButtons from './maxButtons';
 import styles from '../styles';
 
 export default class LiftColumn extends Component {
-    constructor(props) {
-        super(props);
-    }
-    
     render() {
         let rows = [];
         this.props.lifts.forEach(lift => {
@@ -23,8 +19,6 @@ export default class LiftColumn extends Component {
                     <MaxButtons />
                     <Text style={styles.columnBoldText}>{lift.lift}</Text>
                     <Text>{lift.max} X 5</Text>
-                    <Text>{lift.drop1} X 6</Text>
-                    <Text>{lift.drop2} X 7</Text>
                 </View>
             );
         });

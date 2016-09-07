@@ -15,8 +15,6 @@ export default class CategoryColumn extends Component {
                     height: 53 
                 }} />                
                 <Text style={styles.columnBoldText}>Work</Text>
-                <Text style={styles.columnBoldText}>Drop1</Text>
-                <Text style={styles.columnBoldText}>Drop2</Text>
             </View>
         );
     }

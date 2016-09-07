@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import CategoryColumn from './categoryColumn';
 import LiftColumn from './liftColumn';
-import Loading from '../loading';
+import Loading from '../miscComponents/loading';
 import utils from '../store';
 import styles from '../styles';
 
@@ -36,7 +36,7 @@ export default class WorkoutTable extends Component {
         return (
             <View style={styles.workoutTable}>
                 <View style={styles.workoutTableBody}>
-                    <CategoryColumn></CategoryColumn>
+                    <CategoryColumn length={this.state.lifts.length}></CategoryColumn>
                     <LiftColumn lifts={this.state.lifts} />
                 </View>
             </View>

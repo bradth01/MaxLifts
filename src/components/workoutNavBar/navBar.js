@@ -7,15 +7,15 @@ import {
     TouchableHighlight,
     View 
 } from 'react-native';
-import AddLiftScene from './addLift/addLiftScene';
-import WorkoutTable from './workoutTable/workoutTable';
-import styles from './styles';
+import AddLiftScene from '../addLift/addLiftScene';
+import WorkoutTable from '../workoutTable/workoutTable';
+import styles from '../styles';
 
 export default class NavBar extends Component {
     render () {
         const routes = [
             {title: 'Lifts', component: WorkoutTable, index: 0},
-            {title: 'Add Lift', component: AddLiftScene, index: 1},
+            {title: 'Add Lift', component: AddLiftScene, index: 1, props: AddLiftScene.props},
         ];
 
         return (
@@ -54,13 +54,13 @@ export default class NavBar extends Component {
                                         </TouchableHighlight>
                                     );
                                 } else {
-                                    return (
-                                    /// should save lift = STATEFUL        
-                                        <TouchableHighlight 
-                                            onPress={() => navigator.pop()}>
-                                            <Text style={styles.navBarText}>Save</Text>
-                                        </TouchableHighlight>
-                                    );
+                                    return null;
+                                    // return (
+                                    //     <TouchableHighlight 
+                                    //         onPress={() => console.log(route.props)}>
+                                    //         <Text style={styles.navBarText}>Save</Text>
+                                    //     </TouchableHighlight>
+                                    // );
                                 }
                             },
                             Title: (route, navigator, index, navState) =>

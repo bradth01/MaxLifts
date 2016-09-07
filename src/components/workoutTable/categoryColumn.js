@@ -9,13 +9,17 @@ import styles from '../styles';
 
 export default class CategoryColumn extends Component {
     render() {
-        return (
-            <View style={styles.categoryColumn}>
-                <View style={{
-                    height: 53 
-                }} />                
-                <Text style={styles.columnBoldText}>Work</Text>
-            </View>
-        );
+        if (this.props.length) {
+            return (
+                <View style={styles.categoryColumn}>
+                    <View style={{
+                        height: 53 
+                    }} />                
+                    <Text style={styles.columnBoldText}>Work</Text>
+                </View>
+            );
+        } else {
+            return null;
+        }
     }
 }

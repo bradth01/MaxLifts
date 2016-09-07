@@ -19,8 +19,6 @@ export default class LiftColumn extends Component {
                     <MaxButtons />
                     <Text style={styles.columnBoldText}>{lift.lift}</Text>
                     <Text>{lift.max} X 5</Text>
-                    <Text>{lift.drop1} X 6</Text>
-                    <Text>{lift.drop2} X 7</Text>
                 </View>
             );
         });

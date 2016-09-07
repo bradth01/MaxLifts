@@ -23,8 +23,11 @@ export default class NavBar extends Component {
                 initialRoute={routes[0]}
                 initialRouteStack={routes}
                 renderScene={(route, navigator) => {
-                    return <route.component title={route.title} {...this.props} />   
+                    return <route.component title={route.title} />   
                 }}
+                configureScene={(route, routeStack) => 
+                    Navigator.SceneConfigs.HorizontalSwipeJump
+                }
                 navigationBar={
                     <Navigator.NavigationBar
                         style={styles.navBar}
@@ -54,7 +57,6 @@ export default class NavBar extends Component {
                                     return (
                                     /// should save lift = STATEFUL        
                                         <TouchableHighlight 
-                                            activeOpacity={0}
                                             onPress={() => navigator.pop()}>
                                             <Text style={styles.navBarText}>Save</Text>
                                         </TouchableHighlight>

@@ -12,10 +12,6 @@ import WorkoutTable from './workoutTable/workoutTable';
 import styles from './styles';
 
 export default class NavBar extends Component {
-    constructor(props) {
-        super(props);
-    }
-    
     render () {
         const routes = [
             {title: 'Lifts', component: WorkoutTable, index: 0},

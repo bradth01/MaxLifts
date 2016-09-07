@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 import {
     Text,
     View,
-    TextInput
+    TextInput,
+    TouchableOpacity
 } from 'react-native';
 import styles from '../styles';
 

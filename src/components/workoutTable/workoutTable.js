@@ -23,9 +23,24 @@ export default class WorkoutTable extends Component {
         // utils.seed()
         utils.getDbData()
         .then(lifts => {
+            if (lifts) {
+                this.setState({
+                    lifts: lifts,
+                    isLoading: false
+                });
+            } else {
+                this.setState({
+                    isLoading: false
+                });
+            }
+        });
+    }
+
+    refreshState() {
+        utils.getDbData()
+        .then(lifts => {
             this.setState({
-                lifts: lifts,
-                isLoading: false
+                lifts: lifts
             });
         });
     }
@@ -37,8 +52,11 @@ export default class WorkoutTable extends Component {
         return (
             <View style={styles.workoutTable}>
                 <View style={styles.workoutTableBody}>
-                    <CategoryColumn length={this.state.lifts.length}></CategoryColumn>
-                    <LiftColumn lifts={this.state.lifts} />
+                    <CategoryColumn lifts={this.state.lifts}></CategoryColumn>
+                    <LiftColumn 
+                        lifts={this.state.lifts} 
+                        onChangeData={this.refreshState}
+                    />
                 </View>
             </View>
         );

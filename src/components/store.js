@@ -9,11 +9,11 @@ const db = {
 
 const utils = {
     // temp seed function
-    seed() {
-        return db.lifts.destroy()
-        .then(() => Promise.each(lifts, lift => db.lifts.add(lift)))
-        .catch(alert);
-    },
+    // seed() {
+    //     return db.lifts.destroy()
+    //     .then(() => Promise.each(lifts, lift => db.lifts.add(lift)))
+    //     .catch(alert);
+    // },
 
     getDbData() {
         return db.lifts.find()
@@ -27,7 +27,7 @@ const utils = {
     },
 
     removeFromDb(liftName) {
-        db.lifts.remove({
+        return db.lifts.remove({
             where: {
                 lift: liftName 
             }
@@ -36,10 +36,10 @@ const utils = {
     }
 };
 
-let lifts = [
-    {lift: 'Bench Press', max: 180},
-    {lift: 'Squat', max: 215},
-    {lift: 'OHP', max: 125}
-];
+// let lifts = [
+//     {lift: 'Bench Press', max: 180},
+//     {lift: 'Squat', max: 215},
+//     {lift: 'OHP', max: 125}
+// ];
 
 module.exports = utils;

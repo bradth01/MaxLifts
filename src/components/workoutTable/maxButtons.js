@@ -13,7 +13,18 @@ const liftUpIcon = require('../../images/ic_trending_up.png');
 const liftDownIcon = require('../../images/ic_trending_down.png');
 const deleteIcon = require('../../images/ic_clear.png');
 
-export default class MaxButtons extends Component {    
+export default class MaxButtons extends Component {
+    componentDidMount() {
+        console.log('2nd child', this.props);
+    }
+
+    // this.setState isn't a function?!
+    handleChange(liftName) {
+        utils.removeFromDb(liftName)
+        .then(() => this.props.onChangeData())  
+        .catch(alert);
+    }
+
     render() {
         return (
             <View style={styles.maxUpButtonView}>
@@ -31,7 +42,7 @@ export default class MaxButtons extends Component {
                 </TouchableOpacity>
                 <TouchableOpacity 
                     style={styles.deleteButton}
-                    onPress={() => utils.removeFromDb(this.props.lift)}
+                    onPress={() => this.handleChange(this.props.lift)}
                 >
                     <Image source={deleteIcon}/>
                 </TouchableOpacity>

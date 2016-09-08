@@ -15,7 +15,7 @@ export default class NavBar extends Component {
     render () {
         const routes = [
             {title: 'Lifts', component: WorkoutTable, index: 0},
-            {title: 'Add Lift', component: AddLiftScene, index: 1, props: AddLiftScene.props},
+            {title: 'Add Lift', component: AddLiftScene, index: 1},
         ];
 
         return (

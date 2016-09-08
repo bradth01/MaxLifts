@@ -17,7 +17,7 @@ export default class LiftColumn extends Component {
                     <View 
                         style={styles.liftColumn} 
                         key={lift.lift}>
-                        <MaxButtons />
+                        <MaxButtons lift={lift.lift}/>
                         <Text style={styles.columnBoldText}>{lift.lift}</Text>
                         <Text>{lift.max} X 5</Text>
                     </View>

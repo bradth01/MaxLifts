@@ -15,6 +15,11 @@ const styles = StyleSheet.create({
         margin: 5,
         backgroundColor: 'red'
     },
+    deleteButton: {
+        borderWidth: 1,
+        borderColor: 'black',
+        margin: 5
+    },
     maxUpButtonView: { 
         justifyContent: 'space-between',
         flexDirection: 'row',

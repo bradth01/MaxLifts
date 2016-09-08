@@ -7,6 +7,7 @@ import {
     TextInput,
     TouchableOpacity
 } from 'react-native';
+import EventEmitter from 'events';
 import styles from '../styles';
 import utils from '../store.js';
 
@@ -18,11 +19,20 @@ export default class AddLiftScene extends Component {
             max: undefined
         };
     }
+    componentWillMount() {
+        this.eventEmitter = new EventEmitter();
+    }
+
+    componentDidMount() {
+        this.eventEmitter.addListener('saveLiftEvent', (liftObject) => {
+            console.log("HERE");
+        });
+    }
 
     saveLift(liftObject) {
         if (this.liftObject.lift && this.liftObject.max) {
-            utils.addToDb(liftObject);
-            console.log(this.state);
+            console.log('success!')
+            // utils.addToDb(liftObject);
         }
         else {
             //placeholder error
@@ -38,10 +48,7 @@ export default class AddLiftScene extends Component {
                     <TextInput 
                         placeholder="Enter name of lift"
                         style={styles.addLiftInput}
-                        onChangeText={text => {this.liftObject.lift = text;
-                            console.log(this.liftObject);
-                            }
-                        }
+                        onChangeText={text => this.liftObject.lift = text}
                     />
                 </View>
                 <View style={styles.addLiftRow}>
@@ -56,7 +63,10 @@ export default class AddLiftScene extends Component {
                 <View style={styles.addLiftRow}>
                     <TouchableOpacity
                         style={styles.maxUpButton}
-                        onPress={() => this.saveLift(this.liftObject)}
+                        onPress={() => {
+                            this.saveLift(this.liftObject);
+                            this.props.navigator.pop(this.props.routes[this.props.index]);
+                        }}
                     >
                         <Text style={styles.addLiftText}>Save</Text>
                     </TouchableOpacity>

@@ -19,7 +19,7 @@ export default class NavBar extends Component {
     }
 
     onSaveButtonPress() {
-        this.eventEmitter.emit('saveLiftEvent');
+        this.passProps.events.emit('saveLift');
     }
 
     render () {
@@ -28,8 +28,8 @@ export default class NavBar extends Component {
             {
                 title: 'Add Lift', 
                 component: AddLiftScene, 
-                index: 1, 
-                onSaveButtonPress: this.onSaveButtonPress,
+                index: 1,
+                onSaveButtonPress: this.onSaveButtonPress, 
                 passProps: {
                     events: this.eventEmitter
                 }
@@ -41,11 +41,7 @@ export default class NavBar extends Component {
                 initialRoute={routes[0]}
                 initialRouteStack={routes}
                 renderScene={(route, navigator) => {
-                    return <route.component
-                        title={route.title} 
-                        onSaveButtonPress={route.onSaveButtonPress}
-
-                    />   
+                    return <route.component navigator={navigator} title={route.title} passProps={route.passProps}/>   
                 }}
                 configureScene={(route, routeStack) => 
                     Navigator.SceneConfigs.HorizontalSwipeJump
@@ -71,12 +67,11 @@ export default class NavBar extends Component {
                                     return (
                                         <TouchableHighlight 
                                             style={styles.navBarButton}
-                                            onPress={() => navigator.push(routes[route.index + 1])}>
+                                            onPress={() => navigator.push(routes[1])}>
                                             <Text style={styles.navBarText}>Add Lift</Text>
                                         </TouchableHighlight>
                                     );
                                 } else {
-                                    // return null;
                                     return (
                                         <TouchableHighlight 
                                             onPress={() => route.onSaveButtonPress()}>

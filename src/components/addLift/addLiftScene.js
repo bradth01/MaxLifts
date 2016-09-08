@@ -18,24 +18,22 @@ export default class AddLiftScene extends Component {
             lift: undefined,
             max: undefined
         };
-    }
-    componentWillMount() {
-        this.eventEmitter = new EventEmitter();
+        this.eventEmitter = this.props.passProps.events;
     }
 
     componentDidMount() {
-        this.eventEmitter.addListener('saveLiftEvent', (liftObject) => {
-            console.log("HERE");
+        this.eventEmitter.on('saveLift', () => {
+            this.saveLift(this.liftObject);
         });
     }
 
     saveLift(liftObject) {
-        if (this.liftObject.lift && this.liftObject.max) {
+        if (liftObject.lift && liftObject.max) {
             console.log('success!')
-            // utils.addToDb(liftObject);
+            utils.addToDb(liftObject);
         }
         else {
-            //placeholder error
+            // placeholder error should add alertIOS maybe
             console.log('incomplete lift object');
         }
     }
@@ -59,17 +57,6 @@ export default class AddLiftScene extends Component {
                         keyboardType='numeric'
                         onChangeText={text => this.liftObject.max = parseInt(text)}
                     />
-                </View>
-                <View style={styles.addLiftRow}>
-                    <TouchableOpacity
-                        style={styles.maxUpButton}
-                        onPress={() => {
-                            this.saveLift(this.liftObject);
-                            this.props.navigator.pop(this.props.routes[this.props.index]);
-                        }}
-                    >
-                        <Text style={styles.addLiftText}>Save</Text>
-                    </TouchableOpacity>
                 </View>
             </View>
         );

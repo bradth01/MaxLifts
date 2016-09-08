@@ -7,6 +7,7 @@ import {
     TextInput,
     TouchableOpacity
 } from 'react-native';
+import EventEmitter from 'events';
 import styles from '../styles';
 import utils from '../store.js';
 
@@ -17,15 +18,22 @@ export default class AddLiftScene extends Component {
             lift: undefined,
             max: undefined
         };
+        this.eventEmitter = this.props.passProps.events;
+    }
+
+    componentDidMount() {
+        this.eventEmitter.on('saveLift', () => {
+            this.saveLift(this.liftObject);
+        });
     }
 
     saveLift(liftObject) {
-        if (this.liftObject.lift && this.liftObject.max) {
+        if (liftObject.lift && liftObject.max) {
+            console.log('success!')
             utils.addToDb(liftObject);
-            console.log(this.state);
         }
         else {
-            //placeholder error
+            // placeholder error should add alertIOS maybe
             console.log('incomplete lift object');
         }
     }
@@ -38,10 +46,7 @@ export default class AddLiftScene extends Component {
                     <TextInput 
                         placeholder="Enter name of lift"
                         style={styles.addLiftInput}
-                        onChangeText={text => {this.liftObject.lift = text;
-                            console.log(this.liftObject);
-                            }
-                        }
+                        onChangeText={text => this.liftObject.lift = text}
                     />
                 </View>
                 <View style={styles.addLiftRow}>
@@ -52,14 +57,6 @@ export default class AddLiftScene extends Component {
                         keyboardType='numeric'
                         onChangeText={text => this.liftObject.max = parseInt(text)}
                     />
-                </View>
-                <View style={styles.addLiftRow}>
-                    <TouchableOpacity
-                        style={styles.maxUpButton}
-                        onPress={() => this.saveLift(this.liftObject)}
-                    >
-                        <Text style={styles.addLiftText}>Save</Text>
-                    </TouchableOpacity>
                 </View>
             </View>
         );

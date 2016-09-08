@@ -7,15 +7,33 @@ import {
     TouchableHighlight,
     View 
 } from 'react-native';
+import EventEmitter from 'events';
 import AddLiftScene from '../addLift/addLiftScene';
 import WorkoutTable from '../workoutTable/workoutTable';
+import utils from '../store';
 import styles from '../styles';
 
 export default class NavBar extends Component {
+    componentWillMount() {
+        this.eventEmitter = new EventEmitter();
+    }
+
+    onSaveButtonPress() {
+        this.passProps.events.emit('saveLift');
+    }
+
     render () {
         const routes = [
             {title: 'Lifts', component: WorkoutTable, index: 0},
-            {title: 'Add Lift', component: AddLiftScene, index: 1},
+            {
+                title: 'Add Lift', 
+                component: AddLiftScene, 
+                index: 1,
+                onSaveButtonPress: this.onSaveButtonPress, 
+                passProps: {
+                    events: this.eventEmitter
+                }
+            },
         ];
 
         return (
@@ -23,7 +41,7 @@ export default class NavBar extends Component {
                 initialRoute={routes[0]}
                 initialRouteStack={routes}
                 renderScene={(route, navigator) => {
-                    return <route.component title={route.title} />   
+                    return <route.component navigator={navigator} title={route.title} passProps={route.passProps}/>   
                 }}
                 configureScene={(route, routeStack) => 
                     Navigator.SceneConfigs.HorizontalSwipeJump
@@ -49,18 +67,17 @@ export default class NavBar extends Component {
                                     return (
                                         <TouchableHighlight 
                                             style={styles.navBarButton}
-                                            onPress={() => navigator.push(routes[route.index + 1])}>
+                                            onPress={() => navigator.push(routes[1])}>
                                             <Text style={styles.navBarText}>Add Lift</Text>
                                         </TouchableHighlight>
                                     );
                                 } else {
-                                    return null;
-                                    // return (
-                                    //     <TouchableHighlight 
-                                    //         onPress={() => console.log(route.props)}>
-                                    //         <Text style={styles.navBarText}>Save</Text>
-                                    //     </TouchableHighlight>
-                                    // );
+                                    return (
+                                        <TouchableHighlight 
+                                            onPress={() => route.onSaveButtonPress()}>
+                                            <Text style={styles.navBarText}>Save</Text>
+                                        </TouchableHighlight>
+                                    );
                                 }
                             },
                             Title: (route, navigator, index, navState) =>

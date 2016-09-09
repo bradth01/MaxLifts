@@ -29,8 +29,19 @@ export default class AddLiftScene extends Component {
 
     saveLift(liftObject) {
         if (liftObject.lift && liftObject.max) {
-            console.log('success!')
-            utils.addToDb(liftObject);
+            utils.addToDb(liftObject)
+            .then(() => {
+                this.eventEmitter.emit('displayNewLift');
+            })
+            .then(() => {
+                this.liftObject = {
+                    lift: undefined,
+                    max: undefined
+                };
+            })
+            .then(() => {
+                this.props.navigator.pop();
+            });
         }
         else {
             // placeholder error should add alertIOS maybe

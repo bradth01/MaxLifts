@@ -8,6 +8,7 @@ const db = {
 };
 
 const utils = {
+    // add error hadnling to these routes?
     // temp seed function
     seed() {
         return db.lifts.destroy()
@@ -17,22 +18,20 @@ const utils = {
 
     getDbData() {
         return db.lifts.find()
-        .then(lifts => lifts)
-        .catch(alert);
     },
 
     addToDb(liftObject) {
         return db.lifts.add(liftObject)
-        .catch(alert);
     },
 
-    removeFromDb(liftName) {
-        db.lifts.remove({
+    removeAndUpdate(liftName) {
+        return db.lifts.remove({
             where: {
                 lift: liftName 
             }
         })
-        .catch(alert);
+        .then(() => db.lifts.find())
+        .then(lifts => lifts)
     }
 };
 

@@ -8,8 +8,9 @@ import {
 import styles from '../styles';
 
 export default class CategoryColumn extends Component {
+    
     render() {
-        if (this.props.length) {
+        if (this.props.lifts) {
             return (
                 <View style={styles.categoryColumn}>
                     <View style={{

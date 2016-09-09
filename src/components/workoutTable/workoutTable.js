@@ -13,13 +13,13 @@ import utils from '../store';
 import styles from '../styles';
 
 export default class WorkoutTable extends Component {
-
-    constructor() {
-        super();
-        this.deleteLift = this.deleteLift.bind(this);
+    constructor(props) {
+        super(props);
         this.state = {
             isLoading: true
         };
+        this.deleteLift = this.deleteLift.bind(this);
+        this.eventEmitter = this.props.passProps.events;
     }
 
     componentDidMount() {
@@ -36,6 +36,10 @@ export default class WorkoutTable extends Component {
                     isLoading: false
                 });
             }
+        });
+
+        this.eventEmitter.on('displayNewLift', () => {
+            console.log("DISPLAY NEW LIFT!!!");
         });
     }
 

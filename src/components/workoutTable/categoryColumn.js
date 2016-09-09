@@ -8,6 +8,7 @@ import {
 import styles from '../styles';
 
 export default class CategoryColumn extends Component {
+    
     render() {
         if (this.props.lifts) {
             return (

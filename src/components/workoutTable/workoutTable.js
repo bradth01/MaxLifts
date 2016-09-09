@@ -3,7 +3,8 @@
 import React, { Component } from 'react';
 import {
     Text,
-    View
+    View,
+    TouchableOpacity
 } from 'react-native';
 import CategoryColumn from './categoryColumn';
 import LiftColumn from './liftColumn';
@@ -12,16 +13,18 @@ import utils from '../store';
 import styles from '../styles';
 
 export default class WorkoutTable extends Component {
-    constructor(props) {
-        super(props);
+
+    constructor() {
+        super();
+        this.deleteLift = this.deleteLift.bind(this);
         this.state = {
             isLoading: true
         };
     }
 
     componentDidMount() {
-        // utils.seed()
-        utils.getDbData()
+        utils.seed()
+        // utils.getDbData()
         .then(lifts => {
             if (lifts) {
                 this.setState({
@@ -36,13 +39,13 @@ export default class WorkoutTable extends Component {
         });
     }
 
-    refreshState() {
-        utils.getDbData()
+    deleteLift(liftName) {
+        utils.removeAndUpdate(liftName)
         .then(lifts => {
             this.setState({
                 lifts: lifts
             });
-        });
+        });    
     }
 
     render() {
@@ -53,9 +56,9 @@ export default class WorkoutTable extends Component {
             <View style={styles.workoutTable}>
                 <View style={styles.workoutTableBody}>
                     <CategoryColumn lifts={this.state.lifts}></CategoryColumn>
-                    <LiftColumn 
+                    <LiftColumn
                         lifts={this.state.lifts} 
-                        onChangeData={this.refreshState}
+                        onDelete={this.deleteLift}
                     />
                 </View>
             </View>

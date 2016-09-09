@@ -33,6 +33,15 @@ export default class AddLiftScene extends Component {
             .then(() => {
                 this.eventEmitter.emit('displayNewLift');
             })
+            .then(() => {
+                this.liftObject = {
+                    lift: undefined,
+                    max: undefined
+                };
+            })
+            .then(() => {
+                this.props.navigator.pop();
+            });
         }
         else {
             // placeholder error should add alertIOS maybe

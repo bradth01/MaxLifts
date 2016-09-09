@@ -39,7 +39,16 @@ export default class WorkoutTable extends Component {
         });
 
         this.eventEmitter.on('displayNewLift', () => {
-            console.log("DISPLAY NEW LIFT!!!");
+            this.addLiftUpdate();       
+        });
+    }
+
+    addLiftUpdate() {
+        utils.getDbData()
+        .then(lifts => {
+            this.setState({
+                lifts: lifts
+            });
         });
     }
 

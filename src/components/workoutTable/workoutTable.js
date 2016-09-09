@@ -68,7 +68,6 @@ export default class WorkoutTable extends Component {
         return (
             <View style={styles.workoutTable}>
                 <View style={styles.workoutTableBody}>
-                    <CategoryColumn lifts={this.state.lifts}></CategoryColumn>
                     <LiftColumn
                         lifts={this.state.lifts} 
                         onDelete={this.deleteLift}

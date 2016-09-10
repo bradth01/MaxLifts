@@ -20,13 +20,13 @@ export default class MaxButtons extends Component {
             <View style={styles.maxUpButtonView}>
                 <TouchableOpacity 
                     style={styles.maxUpButton}
-                    onPress={() => console.log(this.props.lift)}
+                    onPress={() => this.props.onAdd(this.props.id, this.props.max, this.props.weightUp)}
                 >
                     <Image source={liftUpIcon}/>
                 </TouchableOpacity>
                 <TouchableOpacity 
                     style={styles.maxDownButton}
-                    onPress={() => console.log(this.props.lift)}
+                    onPress={() => this.props.onSubtract(this.props.id, this.props.max, this.props.weightUp)}
                 >
                     <Image source={liftDownIcon}/>
                 </TouchableOpacity>

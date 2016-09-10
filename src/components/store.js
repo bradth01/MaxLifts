@@ -32,6 +32,22 @@ const utils = {
         })
         .then(() => db.lifts.find())
         .then(lifts => lifts)
+    },
+
+    increaseMax(liftId, max, int) {
+        return db.lifts.updateById({
+            max: max + int
+        }, liftId)
+        .then(() => db.lifts.find())
+        .then(lifts => lifts);
+    },
+
+    decreaseMax(liftId, max, int) {
+        return db.lifts.updateById({
+            max: max - int
+        }, liftId)
+        .then(() => db.lifts.find())
+        .then(lifts => lifts);
     }
 };
 

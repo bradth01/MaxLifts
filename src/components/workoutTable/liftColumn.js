@@ -9,7 +9,7 @@ import MaxButtons from './maxButtons';
 import styles from '../styles';
 
 export default class LiftColumn extends Component {
-    calculateLift (liftWeight) {
+    calculateSets (liftWeight) {
     let warmups = [];
     for (let i = 4; i < 10; i++) {
         let temp = Math.round(liftWeight * (i/10), -1);
@@ -27,14 +27,19 @@ export default class LiftColumn extends Component {
         let rows = [];
         if (this.props.lifts) {
             this.props.lifts.forEach(lift => {
-                let warmups = this.calculateLift(lift.max);
+                let warmups = this.calculateSets(lift.max);
                 rows.push(
                     <View 
                         style={styles.liftColumn} 
                         key={lift.lift}>
                         <MaxButtons 
-                            lift={lift.lift} 
+                            lift={lift.lift}
+                            max={lift.max}
+                            id={lift._id}
+                            weightUp={this.props.weightUp}
                             onDelete={this.props.onDelete}
+                            onAdd={this.props.onAdd}
+                            onSubtract={this.props.onSubtract} 
                         />
                         <Text style={styles.columnBoldText}>{lift.lift}</Text>
                         <Text>{lift.max} X 5</Text>

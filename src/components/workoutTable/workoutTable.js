@@ -16,10 +16,20 @@ export default class WorkoutTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoading: true
+            isLoading: true,
+            weightUp: 5
         };
         this.deleteLift = this.deleteLift.bind(this);
+        this.increaseMax = this.increaseMax.bind(this);
+        this.increaseMax = this.increaseMax.bind(this);
+        this.decreaseMax = this.decreaseMax.bind(this);
         this.eventEmitter = this.props.passProps.events;
+    }
+
+    liftUpdate (lifts) {
+        this.setState({
+            lifts: lifts
+        });
     }
 
     componentDidMount() {
@@ -33,7 +43,7 @@ export default class WorkoutTable extends Component {
                 });
             } else {
                 this.setState({
-                    isLoading: false
+                    isLoading: false,
                 });
             }
         });
@@ -45,20 +55,22 @@ export default class WorkoutTable extends Component {
 
     addLiftUpdate() {
         utils.getDbData()
-        .then(lifts => {
-            this.setState({
-                lifts: lifts
-            });
-        });
+        .then(lifts => this.liftUpdate(lifts))
     }
 
     deleteLift(liftName) {
         utils.removeAndUpdate(liftName)
-        .then(lifts => {
-            this.setState({
-                lifts: lifts
-            });
-        });    
+        .then(lifts => this.liftUpdate(lifts));    
+    }
+
+    increaseMax(liftName, max, weightUp) {
+        utils.increaseMax(liftName, max, weightUp)
+        .then(lifts => this.liftUpdate(lifts));
+    }
+
+    decreaseMax(liftName, max, weightUp) {
+        utils.decreaseMax(liftName, max, weightUp)
+        .then(lifts => this.liftUpdate(lifts));
     }
 
     render() {
@@ -69,8 +81,11 @@ export default class WorkoutTable extends Component {
             <View style={styles.workoutTable}>
                 <View style={styles.workoutTableBody}>
                     <LiftColumn
+                        weightUp={this.state.weightUp}
                         lifts={this.state.lifts} 
                         onDelete={this.deleteLift}
+                        onAdd={this.increaseMax}
+                        onSubtract={this.decreaseMax}
                     />
                 </View>
             </View>

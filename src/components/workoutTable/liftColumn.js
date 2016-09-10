@@ -3,7 +3,8 @@
 import React, { Component } from 'react';
 import {
     Text,
-    View
+    View,
+    ScrollView
 } from 'react-native';
 import MaxButtons from './maxButtons';
 import styles from '../styles';
@@ -42,14 +43,14 @@ export default class LiftColumn extends Component {
                             onSubtract={this.props.onSubtract} 
                         />
                         <Text style={styles.columnBoldText}>{lift.lift}</Text>
-                        <Text>{lift.max} X 5</Text>
-                        <Text>{warmups[5]} X 6</Text>
-                        <Text>{warmups[4]} X 7</Text>
-                        <Text>{warmups[4]} X 2</Text>
-                        <Text>{warmups[3]} X 4</Text>
-                        <Text>{warmups[2]} X 6</Text>
-                        <Text>{warmups[1]} X 8</Text>
-                        <Text>{warmups[0]} X 10</Text>
+                        <Text>WORK SET 1: {lift.max} X 5</Text>
+                        <Text>WORK SET 2: {warmups[5]} X 6</Text>
+                        <Text>WORK SET 3: {warmups[4]} X 7</Text>
+                        <Text>WARMUP 5: {warmups[4]} X 2</Text>
+                        <Text>WARMUP 4: {warmups[3]} X 4</Text>
+                        <Text>WARMUP 3: {warmups[2]} X 6</Text>
+                        <Text>WARMUP 2: {warmups[1]} X 8</Text>
+                        <Text>WARMUP 1: {warmups[0]} X 10</Text>
                     </View>
                 );
             });
@@ -57,11 +58,13 @@ export default class LiftColumn extends Component {
 
         if (rows.length) {
             return (
-                <View style={styles.liftColumnRows}>{rows}</View>
+                <ScrollView>{rows}</ScrollView>
             );
         } else {
             return (
-                <Text>No Lifts Added!</Text>   
+                <View style={styles.liftColumn}>
+                    <Text>No Lifts Added!</Text>   
+                </View>
             );
         }
         

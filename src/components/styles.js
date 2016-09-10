@@ -1,8 +1,9 @@
 'use strict';
 
-import {StyleSheet} from 'react-native';
+// import {StyleSheet} from 'react-native';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
     maxUpButton: {
         borderWidth: 1,
         borderColor: 'black',
@@ -29,12 +30,6 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
     },
-    categoryColumn: {
-        flex: .14,
-        justifyContent: 'flex-start',
-        borderWidth: 1,
-        borderColor: 'grey',        
-    },
     columnBoldText: {
         fontWeight: 'bold'
     },
@@ -45,17 +40,22 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         borderWidth: 1,
         borderColor: 'grey',
-        paddingBottom: 2
+        paddingBottom: 2,
+        minWidth: '32%'
     },
     workoutTableBody: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        flex: 1,
     },
     workoutTable: {
+        flexDirection: 'row',
+        flex: 1,
         marginTop: 70,
         marginRight: 5,
         marginBottom: 25,
         marginLeft: 5,
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        maxWidth: '100%'
     },
     navBar: {
         flex: 1,

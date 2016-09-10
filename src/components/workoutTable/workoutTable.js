@@ -6,7 +6,6 @@ import {
     View,
     TouchableOpacity
 } from 'react-native';
-import CategoryColumn from './categoryColumn';
 import LiftColumn from './liftColumn';
 import Loading from '../miscComponents/loading';
 import utils from '../store';

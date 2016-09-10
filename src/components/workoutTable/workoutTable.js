@@ -32,8 +32,8 @@ export default class WorkoutTable extends Component {
     }
 
     componentDidMount() {
-        utils.seed()
-        // utils.getDbData()
+        // utils.seed()
+        utils.getDbData()
         .then(lifts => {
             if (lifts) {
                 this.setState({

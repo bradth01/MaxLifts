@@ -20,7 +20,7 @@ export default class MaxButtons extends Component {
             <View style={styles.maxUpButtonView}>
                 <TouchableOpacity 
                     style={styles.maxUpButton}
-                    onPress={() => this.props.onAdd(this.props.id, this.props.max, this.props.weightUp)}
+                    onPress={() => this.props.onAdd(this.props.id, this.props.max, this.props.weightUp, this.props.up)}
                 >
                     <Image source={liftUpIcon}/>
                 </TouchableOpacity>

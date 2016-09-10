@@ -54,7 +54,9 @@ const utils = {
 let lifts = [
     {lift: 'Bench Press', max: 180},
     {lift: 'Squat', max: 215},
-    {lift: 'OHP', max: 125}
+    {lift: 'OHP', max: 125},
+    {lift: 'Deadlift', max: 260},
+    {lift: 'IBP', max: 155}
 ];
 
 module.exports = utils;

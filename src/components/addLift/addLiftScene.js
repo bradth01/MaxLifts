@@ -17,7 +17,7 @@ export default class AddLiftScene extends Component {
         this.liftObject = {
             lift: undefined,
             max: undefined,
-            up: 1
+            up: '1'
         };
         this.eventEmitter = this.props.passProps.events;
     }

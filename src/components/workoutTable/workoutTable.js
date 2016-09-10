@@ -62,8 +62,8 @@ export default class WorkoutTable extends Component {
         .then(lifts => this.liftUpdate(lifts));    
     }
 
-    increaseMax(liftName, max, weightUp) {
-        utils.increaseMax(liftName, max, weightUp)
+    increaseMax(liftName, max, weightUp, up) {
+        utils.increaseMax(liftName, max, weightUp, up)
         .then(lifts => this.liftUpdate(lifts));
     }
 

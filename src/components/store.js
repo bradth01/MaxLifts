@@ -34,17 +34,35 @@ const utils = {
         .then(lifts => lifts)
     },
 
-    increaseMax(liftId, max, int) {
-        return db.lifts.updateById({
-            max: max + int
-        }, liftId)
-        .then(() => db.lifts.find())
-        .then(lifts => lifts);
+    increaseMax(liftId, max, int, up) {
+        let newUp;
+        if (up === '2 & 3') {
+            newUp = '1';
+        } else if (up === '1') {
+            newUp = '2 & 3';
+        }
+        if (up === '1') {
+            return db.lifts.updateById({
+                max: max + int,
+                up: newUp
+            }, liftId)
+            .then(() => db.lifts.find())
+            .then(lifts => lifts);
+        } else if (up === '2 & 3') {
+            return db.lifts.updateById({
+                max: max,
+                up: newUp
+            }, liftId)
+            .then(() => db.lifts.find())
+            .then(lifts => lifts);
+        }
     },
 
     decreaseMax(liftId, max, int) {
+        let newUp = '1';
         return db.lifts.updateById({
-            max: max - int
+            max: max - int,
+            up: newUp
         }, liftId)
         .then(() => db.lifts.find())
         .then(lifts => lifts);
@@ -52,11 +70,11 @@ const utils = {
 };
 
 let lifts = [
-    {lift: 'Bench Press', max: 180},
-    {lift: 'Squat', max: 215},
-    {lift: 'OHP', max: 125},
-    {lift: 'Deadlift', max: 260},
-    {lift: 'IBP', max: 155}
+    {lift: 'Bench Press', max: 180, up: '2 & 3'},
+    {lift: 'Squat', max: 215, up: '2 & 3'},
+    {lift: 'OHP', max: 125, up: '2 & 3'},
+    {lift: 'Deadlift', max: 260, up: '1'},
+    {lift: 'IBP', max: 155, up: '1'}
 ];
 
 module.exports = utils;

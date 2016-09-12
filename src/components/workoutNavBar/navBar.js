@@ -63,6 +63,7 @@ export default class NavBar extends Component {
                                 } else {
                                     return (
                                         <TouchableHighlight
+                                            style={styles.navBarButton}
                                             onPress={() => navigator.pop()}>
                                             <Text style={styles.navBarText}>Cancel</Text>
                                         </TouchableHighlight>
@@ -72,7 +73,7 @@ export default class NavBar extends Component {
                             RightButton: (route, navigator, index, navState) => {
                                 if (route.index === 0) {
                                     return (
-                                        <TouchableHighlight 
+                                        <TouchableHighlight
                                             style={styles.navBarButton}
                                             onPress={() => navigator.push(routes[1])}>
                                             <Text style={styles.navBarText}>Add Lift</Text>
@@ -81,6 +82,7 @@ export default class NavBar extends Component {
                                 } else {
                                     return (
                                         <TouchableHighlight 
+                                            style={styles.navBarButton}
                                             onPress={() => route.onSaveButtonPress()}>
                                             <Text style={styles.navBarText}>Save</Text>
                                         </TouchableHighlight>

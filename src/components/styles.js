@@ -7,22 +7,31 @@ const styles = EStyleSheet.create({
     maxUpButton: {
         borderWidth: 1,
         borderColor: 'black',
-        margin: 5,
-        backgroundColor: 'green'        
+        marginTop: 4,
+        marginBottom: 4,
+        marginRight: 29,
+        marginLeft: 29,
+        backgroundColor: 'green'       
     },
     maxDownButton: {
         borderWidth: 1,
         borderColor: 'black',
-        margin: 5,
-        backgroundColor: 'red'
+        marginTop: 4,
+        marginBottom: 4,
+        marginRight: 29,
+        marginLeft: 29,        
     },
     deleteButton: {
         borderWidth: 1,
         borderColor: 'black',
-        margin: 5
+        backgroundColor: 'red',
+        marginTop: 4,
+        marginBottom: 4,
+        marginRight: 29,
+        marginLeft: 29,
     },
-    maxUpButtonView: { 
-        justifyContent: 'space-between',
+    maxUpButtonView: {
+        // flex: 1, 
         flexDirection: 'row',
         alignItems: 'center'
     },
@@ -31,17 +40,23 @@ const styles = EStyleSheet.create({
         flexDirection: 'row',
     },
     columnBoldText: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontSize: 18,
+        margin: 2.3
     },
     liftColumn: {
         flex: 1,
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         alignItems: 'center',
         flexWrap: 'wrap',
-        borderWidth: 1,
+        borderWidth: 2,
+        borderBottomWidth: 1,
         borderColor: 'grey',
-        paddingBottom: 2,
-        minWidth: '32%'
+        padding: 2,
+        paddingBottom: 6
+    },
+    liftColumnText: {
+        margin: 2.3
     },
     workoutTableBody: {
         flexDirection: 'row',
@@ -50,11 +65,11 @@ const styles = EStyleSheet.create({
     workoutTable: {
         flexDirection: 'row',
         flex: 1,
-        marginTop: 70,
-        marginRight: 5,
-        marginBottom: 25,
-        marginLeft: 5,
-        justifyContent: 'space-between',
+        marginTop: 75,
+        marginRight: 20,
+        marginBottom: 0,
+        marginLeft: 20,
+        justifyContent: 'center',
         maxWidth: '100%'
     },
     navBar: {
@@ -74,6 +89,9 @@ const styles = EStyleSheet.create({
         fontWeight: 'bold',
         fontSize: 14,
         margin: 7
+    },
+    navBarButton: {
+        backgroundColor: 'yellow'
     }, 
     addLiftBody: {
         marginTop: 70,

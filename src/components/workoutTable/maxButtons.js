@@ -31,18 +31,21 @@ export default class MaxButtons extends Component {
             <View style={styles.maxUpButtonView}>
                 <TouchableOpacity 
                     style={styles.maxUpButton}
+                    activeOpacity={.5}
                     onPress={() => this.props.onAdd(this.props.id, this.props.max, this.props.weightUp, this.props.up)}
                 >
                     <Image source={liftUpIcon}/>
                 </TouchableOpacity>
                 <TouchableOpacity 
                     style={styles.maxDownButton}
+                    activeOpacity={.5}
                     onPress={() => this.props.onSubtract(this.props.id, this.props.max, this.props.weightUp)}
                 >
                     <Image source={liftDownIcon}/>
                 </TouchableOpacity>
                 <TouchableOpacity 
                     style={styles.deleteButton}
+                    activeOpacity={.5}
                     onPress={() => this.deleteOnClick()}
                 >
                     <Image source={deleteIcon}/>

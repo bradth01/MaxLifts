@@ -59,16 +59,16 @@ export default class LiftColumn extends Component {
                             onAdd={this.props.onAdd}
                             onSubtract={this.props.onSubtract}
                         />
-                        <Text style={styles.columnBoldText}>{lift.lift}</Text>
-                        <Text>WORK SET 1: {lift.max} X 5</Text>
-                        <Text>WORK SET 2: {worksets[1]} X 6</Text>
-                        <Text>WORK SET 3: {worksets[0]} X 7</Text>
-                        <Text>WARMUP 5: {warmups[4]} X 2</Text>
-                        <Text>WARMUP 4: {warmups[3]} X 4</Text>
-                        <Text>WARMUP 3: {warmups[2]} X 6</Text>
-                        <Text>WARMUP 2: {warmups[1]} X 8</Text>
-                        <Text>WARMUP 1: {warmups[0]} X 10</Text>
-                        <Text>Increase Work Set(s): {lift.up} Next Workout</Text>
+                        <Text style={styles.columnBoldText}>{lift.lift}:</Text>
+                        <Text style={styles.liftColumnText}>Work Set 1: {lift.max} X 5</Text>
+                        <Text style={styles.liftColumnText}>Work Set 2: {worksets[1]} X 6</Text>
+                        <Text style={styles.liftColumnText}>Work Set 3: {worksets[0]} X 7</Text>
+                        <Text style={styles.liftColumnText}>Warmup 1: {warmups[0]} X 10</Text>
+                        <Text style={styles.liftColumnText}>Warmup 2: {warmups[1]} X 8</Text>
+                        <Text style={styles.liftColumnText}>Warmup 3: {warmups[2]} X 6</Text>
+                        <Text style={styles.liftColumnText}>Warmup 4: {warmups[3]} X 4</Text>
+                        <Text style={styles.liftColumnText}>Warmup 5: {warmups[4]} X 2</Text>
+                        <Text style={styles.liftColumnText}>Increase Work Set(s): {lift.up} Next Workout</Text>
                     </View>
                 );
             });

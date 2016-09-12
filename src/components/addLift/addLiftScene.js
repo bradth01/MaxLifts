@@ -5,7 +5,8 @@ import {
     Text,
     View,
     TextInput,
-    TouchableOpacity
+    TouchableOpacity,
+    AlertIOS
 } from 'react-native';
 import EventEmitter from 'events';
 import styles from '../styles';
@@ -29,7 +30,7 @@ export default class AddLiftScene extends Component {
     }
 
     saveLift(liftObject) {
-        if (liftObject.lift && liftObject.max) {
+        if (liftObject.lift && liftObject.max && !(liftObject.max % 5)) {
             utils.addToDb(liftObject)
             .then(() => {
                 this.eventEmitter.emit('displayNewLift');
@@ -45,8 +46,11 @@ export default class AddLiftScene extends Component {
             });
         }
         else {
-            // placeholder error should add alertIOS maybe
-            console.log('incomplete lift object');
+            AlertIOS.alert(
+                'Please enter a valid Name and Weight (in multiples of 5 lbs).',
+                null,
+                {text: 'Ok'}
+            );
         }
     }
 

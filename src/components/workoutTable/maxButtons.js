@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 import {
     TouchableOpacity, 
     Image, 
-    View
+    View,
+    AlertIos
 } from 'react-native';
 import styles from '../styles';
 import utils from '../store';

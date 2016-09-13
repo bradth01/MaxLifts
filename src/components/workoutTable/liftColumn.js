@@ -50,14 +50,11 @@ export default class LiftColumn extends Component {
                         style={styles.liftColumn} 
                         key={lift.lift}>
                         <MaxButtons 
+                            {...this.props}
                             lift={lift.lift}
                             max={lift.max}
                             up={lift.up} 
                             id={lift._id}
-                            weightUp={this.props.weightUp}
-                            onDelete={this.props.onDelete}
-                            onAdd={this.props.onAdd}
-                            onSubtract={this.props.onSubtract}
                         />
                         <Text style={styles.columnBoldText}>{lift.lift}:</Text>
                         <Text style={styles.liftColumnText}>Work Set 1: {lift.max} X 5</Text>

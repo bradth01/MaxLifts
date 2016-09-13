@@ -16,20 +16,27 @@ export default class AddLiftScene extends Component {
     constructor(props) {
         super(props);
         this.liftObject = {
-            lift: undefined,
-            max: undefined,
+            lift: null,
+            max: null,
             up: '1'
         };
         this.eventEmitter = this.props.passProps.events;
     }
 
-    componentDidMount() {
-        this.eventEmitter.on('saveLift', () => {
-            this.saveLift(this.liftObject);
-        });
+    // saveLift event is getting emitted way too often
+    componentDidMount() {   
+        this.eventEmitter.on('saveLift', () => this.onEvent());
+    }
+
+    onEvent() {
+        // console.log('EVENT');
+        // console.log(EventEmitter.listenerCount(this.eventEmitter, 'saveLift'));
+        // console.log(this.liftObject);
+        this.saveLift(this.liftObject);
     }
 
     saveLift(liftObject) {
+        this.eventEmitter.removeListener('saveLift', () => this.onEvent());
         if (liftObject.lift && liftObject.max && !(liftObject.max % 5)) {
             utils.addToDb(liftObject)
             .then(() => {
@@ -37,20 +44,19 @@ export default class AddLiftScene extends Component {
             })
             .then(() => {
                 this.liftObject = {
-                    lift: undefined,
-                    max: undefined
+                    lift: null,
+                    max: null
                 };
             })
             .then(() => {
                 this.props.navigator.pop();
             });
-        }
-        else {
-            AlertIOS.alert(
-                'Please enter a valid Name and Weight (in multiples of 5 lbs).',
-                null,
-                {text: 'Ok'}
-            );
+        } else {
+            if (liftObject.lift && liftObject.max) {
+                AlertIOS.alert(
+                    'Please enter a valid Name and Weight (in multiples of 5 lbs).',
+                );
+            }
         }
     }
 
